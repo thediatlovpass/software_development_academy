@@ -21,7 +21,7 @@ public class DecimalToBinary {
             // Puts on stack remainder
             stack.push(num % BINARY_BASE);
             // Divide number
-            num = num / 2;
+            num = num / BINARY_BASE;
         }
         while (!stack.isEmpty()) {
             // Till stack is not empty take elements from top and print next to each
