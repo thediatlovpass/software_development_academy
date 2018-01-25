@@ -4,6 +4,9 @@ import java.util.Scanner;
 import java.util.Stack;
 
 public class DecimalToBinary {
+
+    private static final int BINARY_BASE = 2;
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         // Reads number from standard input
@@ -16,7 +19,7 @@ public class DecimalToBinary {
         // Loop till number is greater than 0
         while (num > 0) {
             // Puts on stack remainder
-            stack.push(num % 2);
+            stack.push(num % BINARY_BASE);
             // Divide number
             num = num / 2;
         }
