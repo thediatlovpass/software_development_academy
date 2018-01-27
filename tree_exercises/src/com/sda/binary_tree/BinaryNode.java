@@ -1,9 +1,11 @@
 package com.sda.binary_tree;
 
+import com.sda.commons.IListNode;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class BinaryNode<T> {
+public class BinaryNode<T> implements IListNode<T> {
     T data;
     BinaryNode parent;
     BinaryNode leftChild;
@@ -34,11 +36,26 @@ public class BinaryNode<T> {
         this.parent = parent;
     }
 
+    @Override
+    public T getData() {
+        return data;
+    }
+
     public BinaryNode getLeftChild() {
         return leftChild;
     }
 
     public BinaryNode getRightChild() {
         return rightChild;
+    }
+
+    @Override
+    public int getPosition() {
+        return 0;
+    }
+
+    @Override
+    public String toString() {
+        return data.toString();
     }
 }

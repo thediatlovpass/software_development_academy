@@ -1,7 +1,9 @@
 package com.sda.binary_tree;
 
+import com.sda.commons.TreeUtils;
+
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         BinaryNode<String> root = new BinaryNode<>("A");
         BinaryNode<String> rootChild1 = new BinaryNode<>("B");
         BinaryNode<String> rootChild2 = new BinaryNode<>("C");
@@ -24,5 +26,16 @@ public class Main {
 
         myBinaryTree.insertNode(rootChild3, dChild1);
 
+        System.out.println(myBinaryTree.getHeight());
+
+//        System.out.println("------------");
+//        System.out.println("pre-order");
+//        TreeUtils.printPreOrder(root);
+//        System.out.println("------------");
+//        System.out.println("in-order");
+//        TreeUtils.printInOrder(root);
+//        System.out.println("post-order");
+//        TreeUtils.printPostOrder(root);
+        myBinaryTree.printPreOrder(root);
     }
 }
