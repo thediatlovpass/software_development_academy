@@ -36,7 +36,6 @@ public class BinaryNode<T> implements IListNode<T> {
         this.parent = parent;
     }
 
-    @Override
     public T getData() {
         return data;
     }
@@ -47,11 +46,6 @@ public class BinaryNode<T> implements IListNode<T> {
 
     public BinaryNode getRightChild() {
         return rightChild;
-    }
-
-    @Override
-    public int getPosition() {
-        return 0;
     }
 
     @Override

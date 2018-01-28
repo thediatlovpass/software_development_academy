@@ -4,7 +4,7 @@ import com.sda.binary_tree.BinaryNode;
 import com.sda.commons.AbstractTree;
 import com.sda.commons.IListNode;
 
-public class CompleteBinaryTree extends AbstractTree{
+public class CompleteBinaryTree implements AbstractTree{
 
     public static final int LEFT_NODE_POSITION = 1;
     public static final int RIGHT_NODE_POSITION = 2;
@@ -48,14 +48,5 @@ public class CompleteBinaryTree extends AbstractTree{
 //        children[1] = array[rightPosition];
 //        return new Node[]{array[leftPosition], array[rightPosition]};
         return new IListNode[]{getLeftChild(node), getRightChild(node)};
-    }
-
-    public int heightOfTree(IListNode node) {
-        if (node == null) {
-            return 0;
-        }
-        int leftHeight = heightOfTree(getLeftChild(node));
-        int rightHeight = heightOfTree(getRightChild(node));
-        return Math.max(leftHeight, rightHeight) + 1;
     }
 }

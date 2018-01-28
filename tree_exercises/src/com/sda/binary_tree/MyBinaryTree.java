@@ -5,7 +5,7 @@ import com.sda.commons.IListNode;
 import com.sda.commons.TreeUtils;
 import com.sda.complete_tree.Node;
 
-public class MyBinaryTree extends AbstractTree{
+public class MyBinaryTree implements AbstractTree{
     BinaryNode root;
 
     public MyBinaryTree(BinaryNode root) {

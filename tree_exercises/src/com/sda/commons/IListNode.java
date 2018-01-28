@@ -2,8 +2,16 @@ package com.sda.commons;
 
 public interface IListNode<T> {
     public T getData();
-    public IListNode getLeftChild();
-    public IListNode getRightChild();
 
-    public int getPosition();
+    default IListNode getLeftChild() {
+        return null;
+    }
+
+    default IListNode getRightChild() {
+        return null;
+    }
+
+    default int getPosition() {
+        return 0;
+    }
 }

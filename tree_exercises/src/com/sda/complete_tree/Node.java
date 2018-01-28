@@ -22,16 +22,6 @@ public class Node<T> implements IListNode<T>{
         return data;
     }
 
-    @Override
-    public IListNode getLeftChild() {
-        return null;
-    }
-
-    @Override
-    public IListNode getRightChild() {
-        return null;
-    }
-
     public void setData(T data) {
         this.data = data;
     }
