@@ -23,4 +23,27 @@ public class MyHeap {
         }
         array[index] = value;
     }
+
+    public void remove() {
+        if (count == 0) {
+            return;
+        }
+        count--;
+        Integer value = array[count];
+        int index = 0;
+        int sonIndex = 1;
+        while (sonIndex < count) {
+            if (sonIndex + 1 < count && array[sonIndex + 1] > array[sonIndex]) {
+                sonIndex++;
+            }
+            if (value >= array[sonIndex]) {
+                break;
+            }
+            array[index] = array[sonIndex];
+            index = sonIndex;
+            sonIndex = 2 * sonIndex + 1;
+        }
+        array[index] = value;
+        array[count] = null;
+    }
 }
