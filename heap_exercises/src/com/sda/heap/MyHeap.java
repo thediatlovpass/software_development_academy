@@ -24,10 +24,11 @@ public class MyHeap {
         array[index] = value;
     }
 
-    public void remove() {
+    public Integer remove() {
         if (count == 0) {
-            return;
+            return null;
         }
+        Integer result = array[0];
         count--;
         Integer value = array[count];
         int index = 0;
@@ -45,5 +46,15 @@ public class MyHeap {
         }
         array[index] = value;
         array[count] = null;
+        return result;
+    }
+
+    public Integer[] sort() {
+        Integer[] resultArray = new Integer[count];
+        int size = count;
+        for (int i = 0; i < size; i++) {
+            resultArray[i] = remove();
+        }
+        return resultArray;
     }
 }
