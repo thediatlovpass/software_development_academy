@@ -1,5 +1,8 @@
 package com.sda.sorters.bubblesort;
 
+import org.assertj.core.api.Assert;
+import org.assertj.core.api.Assertions;
+
 public class BubbleSort {
     public static void main(String[] args) {
         Integer[] array = {1, 2, 3, 4, 5, 6};
