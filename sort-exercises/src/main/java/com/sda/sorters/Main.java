@@ -1,8 +1,8 @@
 package com.sda.sorters;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import com.sda.sorters.actions.*;
+
+import java.util.*;
 
 public class Main {
 
@@ -13,8 +13,15 @@ public class Main {
     public static final String COMMAND_NOT_RECOGNIZED = "Command not recognized";
     public static final String DISPLAY_COMMAND = "display";
     public static final String REMOVE_COMMAND = "remove";
+    public static final String GENERATE_COMMAND = "generate";
 
     public static void main(String[] args) {
+        Map<String, Action> actions = new HashMap<>();
+        actions.put(ADD_COMMAND, new AddAction());
+        actions.put(REMOVE_COMMAND, new RemoveAction());
+        actions.put(GENERATE_COMMAND, new GenerateAction());
+        actions.put(GENERATE_COMMAND + "1000", new GenerateAction(1000));
+        actions.put(DISPLAY_COMMAND, new DisplayAction());
         List<Integer> list = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         String command = " ";
@@ -23,41 +30,12 @@ public class Main {
             String inputString = scanner.nextLine();
             String[] inputSplitArray = inputString.split(SPLIT_STRING);
             command = inputSplitArray[0];
-            switch (command) {
-                case ADD_COMMAND: {
-                    addElement(list, inputSplitArray);
-                    break;
-                }
-                case EXIT_COMMAND: {
-                    System.out.println(EXIT_COMMAND);
-                    break;
-                }
-                case DISPLAY_COMMAND: {
-                    System.out.println(list.toString());
-                    break;
-                }
-                case REMOVE_COMMAND: {
-                    removeElement(list, inputSplitArray);
-                    break;
-                }
-                default: {
-                    System.out.println(COMMAND_NOT_RECOGNIZED);
-                }
+            Action currentAction = actions.get(command);
+            if (currentAction == null) {
+                System.out.println(COMMAND_NOT_RECOGNIZED);
+            } else {
+                currentAction.doAction(list, inputSplitArray);
             }
         }
-    }
-
-    private static void removeElement(List<Integer> list, String[] inputSplitArray) {
-        for (int i = 1; i < inputSplitArray.length; i++) {
-            list.remove(Integer.valueOf(inputSplitArray[i]));
-        }
-        System.out.println(REMOVE_COMMAND + " " + list.toString());
-    }
-
-    private static void addElement(List<Integer> list, String[] inputSplitArray) {
-        for (int i = 1; i < inputSplitArray.length; i++) {
-            list.add(Integer.valueOf(inputSplitArray[i]));
-        }
-        System.out.println(ADD_COMMAND + " " + list.toString());
     }
 }
