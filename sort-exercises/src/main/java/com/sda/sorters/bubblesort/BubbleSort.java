@@ -1,4 +1,4 @@
-package com.sda.bubblesort;
+package com.sda.sorters.bubblesort;
 
 import java.time.Duration;
 import java.time.Instant;
