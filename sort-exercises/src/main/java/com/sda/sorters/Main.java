@@ -14,6 +14,8 @@ public class Main {
     public static final String DISPLAY_COMMAND = "display";
     public static final String REMOVE_COMMAND = "remove";
     public static final String GENERATE_COMMAND = "generate";
+    public static final String REMOVE_ALL_COMMAND = "remove_all";
+    public static final String SORT_COMMAND = "sort";
 
     public static void main(String[] args) {
         Map<String, Action> actions = new HashMap<>();
@@ -22,6 +24,8 @@ public class Main {
         actions.put(GENERATE_COMMAND, new GenerateAction());
         actions.put(GENERATE_COMMAND + "1000", new GenerateAction(1000));
         actions.put(DISPLAY_COMMAND, new DisplayAction());
+        actions.put(REMOVE_ALL_COMMAND, new RemoveAllAction());
+        actions.put(SORT_COMMAND, new SortAction());
         List<Integer> list = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         String command = " ";
