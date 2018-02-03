@@ -1,8 +1,5 @@
 package com.sda.sorters.bubblesort;
 
-import java.time.Duration;
-import java.time.Instant;
-
 public class BubbleSort {
     public static void main(String[] args) {
         Integer[] array = {1, 2, 3, 4, 5, 6};
@@ -13,7 +10,6 @@ public class BubbleSort {
     }
 
     private static void bubbleSort(Integer[] array) {
-        Instant start = Instant.now();
         int size = array.length;
         for (int i = 0; i < size; i++) {
             boolean noStop = false;
@@ -29,8 +25,5 @@ public class BubbleSort {
                 break;
             }
         }
-        Instant end = Instant.now();
-        Duration timeElapsed = Duration.between(start, end);
-        System.out.println("Time taken: "+ timeElapsed.toMillis() +" milliseconds");
     }
 }
