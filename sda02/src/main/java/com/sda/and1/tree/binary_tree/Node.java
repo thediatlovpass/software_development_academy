@@ -35,4 +35,9 @@ public class Node<T> {
     public Node getRight() {
         return right;
     }
+
+    @Override
+    public String toString() {
+        return data.toString();
+    }
 }
