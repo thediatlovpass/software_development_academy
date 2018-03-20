@@ -36,4 +36,18 @@ public class CompleteTree {
         return values[parentIndex];
     }
 
+    public void printInOrder(){
+        printInOrderRecurse(values[0]);
+    }
+
+    public void printInOrderRecurse(Node node) {
+        if (getLeft(node) != null) {
+            printInOrderRecurse(getLeft(node));
+        }
+        System.out.print(node.toString() + " ");
+        if (getRight(node) != null) {
+            printInOrderRecurse(getRight(node));
+        }
+    }
+
 }
