@@ -26,7 +26,8 @@ public class Main {
 //            result[i] = heap.remove();
 //        }
 //        System.out.println(Arrays.asList(result));
-        heapSort(new Integer[]{3, 6, 3, 7, 8, 4});
+        Integer[] array = {3, 6, 3, 7, 8, 4};
+        heapSort(array);
     }
 
     private static void heapSort(Integer[] array) {
