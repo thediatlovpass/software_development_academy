@@ -22,20 +22,21 @@ public class Heap {
 
     public Integer remove() {
         int size = values.size();
-        if (size == 0) return 0;
         Integer currentRoot = values.get(0);
         int currentIndex = 0;
         int lastValue = values.get(size - 1);
         values.remove(size - 1);
-        values.set(currentIndex, lastValue);
-        int greatestChildIndex = getGreatestChildIndex(currentIndex);
-        while (greatestChildIndex > 0 && values.get(greatestChildIndex) > lastValue) {
-            Integer greatestChildValue = values.get(greatestChildIndex);
-            Integer currentValue = values.get(currentIndex);
-            values.set(currentIndex, greatestChildValue);
-            values.set(greatestChildIndex, currentValue);
-            currentIndex = greatestChildIndex;
-            greatestChildIndex = getGreatestChildIndex(currentIndex);
+        if(values.size() > 0) {
+            values.set(currentIndex, lastValue);
+            int greatestChildIndex = getGreatestChildIndex(currentIndex);
+            while (greatestChildIndex > 0 && values.get(greatestChildIndex) > lastValue) {
+                Integer greatestChildValue = values.get(greatestChildIndex);
+                Integer currentValue = values.get(currentIndex);
+                values.set(currentIndex, greatestChildValue);
+                values.set(greatestChildIndex, currentValue);
+                currentIndex = greatestChildIndex;
+                greatestChildIndex = getGreatestChildIndex(currentIndex);
+            }
         }
         return currentRoot;
     }
@@ -79,5 +80,9 @@ public class Heap {
 
     public void setValues(List<Integer> values) {
         this.values = values;
+    }
+
+    public int getSize(){
+        return values.size();
     }
 }
