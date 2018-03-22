@@ -6,19 +6,20 @@ import java.util.Arrays;
 
 public class InsertSort extends AbstractSort {
     public static void main(String[] args) {
-        Integer[] inputArray = {7, 3, 4, 8, 5, 9};
-        insertSort(inputArray, false);
+//        Integer[] inputArray = {7, 3, 4, 8, 5, 9};
+//        insertSort(inputArray, false);
+//        System.out.println(Arrays.asList(inputArray));
+        String[] inputArray = {"c", "cb", "ca", "a", "Bc", "bcaa", "abc", "ab"};
+        insertSortString(inputArray);
         System.out.println(Arrays.asList(inputArray));
-//        String[] inputArray = {"ca", "cd", "cb", "a", "cba", "cda", "acd"};
-//        insertSortString(inputArray);
     }
 
     public static void insertSortString(String[] array) {
         Integer pointer = 1;
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < pointer; j++) {
-                char[] arrayJ = array[j].toCharArray();
-                char[] arrayP = array[pointer].toCharArray();
+                char[] arrayJ = array[j].toLowerCase().toCharArray();
+                char[] arrayP = array[pointer].toLowerCase().toCharArray();
                 for (int k = 0; k < arrayJ.length && k < arrayP.length; k++) {
                     if (arrayJ[k] > arrayP[k]) {
                         swapString(array, pointer, j);
