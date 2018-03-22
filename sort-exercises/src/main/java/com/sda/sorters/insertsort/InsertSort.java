@@ -6,10 +6,11 @@ import java.util.Arrays;
 
 public class InsertSort extends AbstractSort {
     public static void main(String[] args) {
-//        Integer[] inputArray = {7, 3, 4, 8, 5, 9};
-//        insertSort(inputArray, false);
-        String[] inputArray = {"ca", "cd", "cb", "a", "cba", "cda", "acd"};
-        insertSortString(inputArray);
+        Integer[] inputArray = {7, 3, 4, 8, 5, 9};
+        insertSort(inputArray, false);
+        System.out.println(Arrays.asList(inputArray));
+//        String[] inputArray = {"ca", "cd", "cb", "a", "cba", "cda", "acd"};
+//        insertSortString(inputArray);
     }
 
     public static void insertSortString(String[] array) {
@@ -48,12 +49,12 @@ public class InsertSort extends AbstractSort {
 
     public static void insertSort(Integer[] array, boolean orderAsc) {
         Integer pointer = 1;
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 1; i < array.length; i++) {
             for (int j = 0; j < pointer; j++) {
-                if (array[j] > array[pointer] && orderAsc) {
-                    swap(array, pointer, j);
+                if (array[j] > array[i] && orderAsc) {
+                    swap(array, i, j);
                 } else if (array[j] < array[pointer] && !orderAsc) {
-                    swap(array, pointer, j);
+                    swap(array, i, j);
                 }
             }
             if (pointer < array.length - 1) {

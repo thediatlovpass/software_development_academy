@@ -4,6 +4,7 @@ public class MergeSort1 {
     public static void main(String[] args) {
         int[] inputArr = {6, 5, 4, 1, 3, 7, 9, 2};
         mergeSort(inputArr, 0, inputArr.length - 1);
+        long l = 5;
     }
 
     private static void mergeSort(int[] array, int left, int right) {
