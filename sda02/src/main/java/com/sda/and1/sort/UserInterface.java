@@ -1,5 +1,6 @@
 package com.sda.and1.sort;
 
+import com.sda.and1.sort.boubble_sort.BubbleSort;
 import com.sda.and1.sort.insert_sort.InserSort;
 
 import java.util.ArrayList;
@@ -14,13 +15,13 @@ public class UserInterface {
         List<Integer> arrayList = new ArrayList<>();
         while (!exit) {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("> ");
+            System.out.print("> ");
             String inputStrem = scanner.nextLine();
             String[] split = inputStrem.split(" ");
             String comend = split[0];
-            int value = 0;
+            String value = "";
             if (split.length > 1) {
-                value = Integer.parseInt(split[1]);
+                value = split[1];
             }
             switch (comend) {
                 case "add":
@@ -40,36 +41,51 @@ public class UserInterface {
                     exit = true;
                     break;
                 case "sort":
-                    sort(arrayList);
+                    sort(arrayList, value);
                     break;
-                    default:
-                        System.out.println("Invalid input");
+                default:
+                    System.out.println("Invalid input");
             }
 
         }
     }
 
-    private static void remove(List<Integer> arrayList, int value) {
-        if (value < arrayList.size()) {
-            arrayList.remove(value);
+    private static void remove(List<Integer> arrayList, String value) {
+        int intValue = Integer.parseInt(value);
+        if (intValue < arrayList.size()) {
+            arrayList.remove(intValue);
         } else {
             System.out.println("Out of bounds!");
         }
     }
 
-    private static void add(List list, Integer elementToAdd) {
+    private static void add(List list, String elementToAdd) {
         list.add(elementToAdd);
 
     }
-    private static void generate(List<Integer> list,int n){
-        for(int i = 0; i<n;i++) {
+
+    private static void generate(List<Integer> list, String n) {
+        int intValue = Integer.parseInt(n);
+        for (int i = 0; i < intValue; i++) {
             int x = ThreadLocalRandom.current().nextInt(100);
             list.add(x);
         }
     }
-    private static void sort(List<Integer> list) {
-        Integer[] temp =  list.toArray(new Integer[list.size()]);
-        InserSort.insertSort(temp);
+
+    private static void sort(List<Integer> list, String sortType) {
+        Integer[] temp = list.toArray(new Integer[list.size()]);
+        switch (sortType) {
+            case "bubbleSort":
+                BubbleSort.bubbleSort(temp);
+                break;
+            case "insertSort":
+                InserSort.insertSort(temp);
+                break;
+
+            default:
+                System.out.println("Invalid command");
+
+        }
         System.out.println(Arrays.asList(temp));
     }
 }

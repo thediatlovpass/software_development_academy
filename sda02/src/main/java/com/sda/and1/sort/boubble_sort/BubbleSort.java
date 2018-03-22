@@ -9,7 +9,7 @@ public class BubbleSort {
         System.out.println(Arrays.asList(array));
     }
 
-    private static void bubbleSort(Integer[] array) {
+    public static void bubbleSort(Integer[] array) {
         boolean isSorted = true;
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array.length - 1; j++) {
