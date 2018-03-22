@@ -11,7 +11,7 @@ public class InserSort {
         System.out.println(Arrays.asList(array));
     }
 
-    private static void insertSort(Integer[] array) {
+    public static void insertSort(Integer[] array) {
         int pointer = 1;
         for(int i = 1; i < array.length; i++) {
             int val = array[i];
