@@ -1,4 +1,4 @@
-package com.sda.and1;
+package com.sda.and1.various;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -18,19 +18,17 @@ public class Exercise4 {
 
     private static void calcDouble(double num) {
         int iterator = 0;
-        while (num > 0.0) {
-            BigDecimal number = new BigDecimal(num);
-            number.setScale(2, RoundingMode.FLOOR);
-            BigDecimal divisor = new BigDecimal(NOMINALS[iterator]);
-            divisor.setScale(2, RoundingMode.FLOOR);
-            int count = number.divide(divisor, BigDecimal.ROUND_FLOOR).intValue();
-            BigDecimal countDec = new BigDecimal(count);
-            countDec.setScale(2);
-            number = number.subtract(countDec.multiply(divisor));
-            if(count > 0){
-                System.out.println(count + " x " + NOMINALS[iterator] + "");
+        BigDecimal number = new BigDecimal(num).setScale(2, RoundingMode.HALF_UP);
+        while (number.doubleValue() > 0.0) {
+            BigDecimal divisor = new BigDecimal(NOMINALS[iterator]).setScale(2, RoundingMode.HALF_UP);
+            BigDecimal count = number.divide(divisor, BigDecimal.ROUND_FLOOR).setScale(0, RoundingMode.FLOOR);
+            number = number.subtract(count.multiply(divisor));
+            if (count.intValue() > 0) {
+                boolean isZloty = divisor.doubleValue() >= 1.0;
+                String ending = isZloty ? " zł" : " gr";
+                divisor = !isZloty ? divisor.multiply(new BigDecimal(100)) : divisor;
+                System.out.println(count.intValue() + " x " + divisor.setScale(0, RoundingMode.HALF_UP) + ending);
             }
-            num = number.doubleValue();
             iterator++;
         }
     }

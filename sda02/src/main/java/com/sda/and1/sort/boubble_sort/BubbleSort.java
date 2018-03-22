@@ -2,7 +2,7 @@ package com.sda.and1.sort.boubble_sort;
 
 import java.util.Arrays;
 
-public class BoubbleSort {
+public class BubbleSort {
     public static void main(String[] args) {
         Integer[] array = {3, 4, 5, 2, 1};
         bubbleSort(array);

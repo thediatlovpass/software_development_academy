@@ -1,4 +1,4 @@
-package com.sda.and1;
+package com.sda.and1.various;
 
 import java.util.HashMap;
 import java.util.Map;

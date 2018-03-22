@@ -1,4 +1,4 @@
-package com.sda.and1;
+package com.sda.and1.various;
 
 public class Exercise5 {
     public static void main(String[] args){
