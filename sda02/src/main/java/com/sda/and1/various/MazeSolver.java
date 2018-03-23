@@ -25,8 +25,8 @@ public class MazeSolver {
         points.push(new Point(1, 4));
         points.push(new Point(16, 1));
 
-//        System.out.println(isExist(new Point(1, 4), points));
-//        System.out.println(isExist(new Point(1, 5), points));
+//        System.out.println(isOnStack(new Point(1, 4), points));
+//        System.out.println(isOnStack(new Point(1, 5), points));
 //        solveMaze(maze1);
         solveMaze(maze2);
 
@@ -47,39 +47,45 @@ public class MazeSolver {
         Point currentPoint = new Point(x, y);
         while (currentPoint.getY() != maze1.length - 1) {
             System.out.println(currentPoint.getY() + " " + currentPoint.getX());
-            if (maze1[currentPoint.getY() + 1][currentPoint.getX()] == 0 && maze1[currentPoint.getY() + 1][currentPoint.getX()] != 2) {
+            if (maze1[currentPoint.getY() + 1][currentPoint.getX()] == 0
+                    && !isOnStack(new Point(currentPoint.getX(), currentPoint.getY() + 1), points)) {
                 currentPoint.setY(currentPoint.getY() + 1);
                 points.push(new Point(currentPoint));
-            } else if (maze1[currentPoint.getY()][currentPoint.getX() + 1] == 0) {
+            } else if (maze1[currentPoint.getY()][currentPoint.getX() + 1] == 0
+                    && !isOnStack(new Point(currentPoint.getX() + 1, currentPoint.getY()), points)) {
                 currentPoint.setX(currentPoint.getX() + 1);
                 points.push(new Point(currentPoint));
-            } else if (maze1[currentPoint.getY()][currentPoint.getX() - 1] == 0) {
+            } else if (maze1[currentPoint.getY()][currentPoint.getX() - 1] == 0
+                    && !isOnStack(new Point(currentPoint.getX() - 1, currentPoint.getY()), points)) {
                 currentPoint.setX(currentPoint.getX() - 1);
                 points.push(new Point(currentPoint));
-            } else {
-                maze1[currentPoint.getY()][currentPoint.getX()] = 2;
+            } else if (maze1[currentPoint.getY() - 1][currentPoint.getX()] == 0
+                    && !isOnStack(new Point(currentPoint.getX(), currentPoint.getY() - 1), points)) {
                 currentPoint.setY(currentPoint.getY() - 1);
                 points.push(new Point(currentPoint));
+            } else {
+                Point fromStack = points.pop();
+                maze1[fromStack.getY()][fromStack.getX()] = 1;
+                currentPoint = new Point(points.peek());
             }
-
         }
 
         System.out.println(currentPoint.getY() + " " + currentPoint.getX());
     }
 
 
-    public static Point isExist(Point point, Stack<Point> points) {
+    public static boolean isOnStack(Point point, Stack<Point> points) {
 //        Point foundPoint = points.stream()
 //                .filter(point1 -> point1.getY() == point.getY() && point1.getX() == point.getX())
 //                .findAny()
 //                .get();
         ListIterator<Point> pointListIterator = points.listIterator();
-        while(pointListIterator.hasNext()){
+        while (pointListIterator.hasNext()) {
             Point nextPoint = pointListIterator.next();
-            if(nextPoint.equals(point)){
-                return nextPoint;
+            if (nextPoint.equals(point)) {
+                return true;
             }
         }
-        return null;
+        return false;
     }
 }
