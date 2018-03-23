@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.Transient;
+import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -17,10 +18,46 @@ public class ConwayGameOfLife extends JPanel {
 
     public ConwayGameOfLife(int width, int height) {
         this.grid = new int[width / 4][height / 4];
+//        this.grid[10][10] = 1;
+        Random random = new Random();
+        for (int i = 0; i < width / 4; i++) {
+            for (int j = 0; j < height / 4; j++) {
+                int temp = random.nextInt(100);
+                if (temp > 52) {
+                    grid[i][j] = 1;
+                }
+            }
+        }
     }
 
     public void updateGrid() {
+        java.util.List<Point> points = new ArrayList<>();
+        points.add(new Point(-1,-1));
+        points.add(new Point(-1,0));
+        points.add(new Point(-1,1));
+        points.add(new Point(0,1));
+        points.add(new Point(1,1));
+        points.add(new Point(1,0));
+        points.add(new Point(1,-1));
+        points.add(new Point(0,-1));
+        int[][] tempGrid= new int[grid.length][grid[0].length];
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                int count = 0;
+                for (Point point: points) {
+                    if((i-point.getX()>0 && i-point.getX()<grid.length)
+                            &&(j-point.getY()>0 && j-point.getY()<grid[0].length)
+                            &&(grid[i-point.getX()][j-point.getY()]==1)){
+                        count++;
+                    }
+                }
+                if(count==3) tempGrid[i][j]=1;
+                else if(grid[i][j]==1 && count==2) tempGrid[i][j]=1;
+                else tempGrid[i][j]=0;
 
+            }
+        }
+        grid=tempGrid;
     }
 
     @Override
