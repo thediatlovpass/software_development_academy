@@ -34,4 +34,13 @@ public class Point {
     public String toString() {
         return String.format("%d %d", x, y);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Point){
+            Point point = (Point) obj;
+            return point.getX() == this.x && point.getY() == this.y;
+        }
+        return false;
+    }
 }

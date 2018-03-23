@@ -1,5 +1,6 @@
 package com.sda.and1.various;
 
+import java.util.ListIterator;
 import java.util.Stack;
 
 public class MazeSolver {
@@ -18,13 +19,14 @@ public class MazeSolver {
                 {1, 1, 1, 1, 0, 1}
         };
 
-//        Stack<Point> points = new Stack<>();
-//        points.push(new Point(1, 1));
-//        points.push(new Point(2, 1));
-//        points.push(new Point(1, 4));
-//        points.push(new Point(16, 1));
+        Stack<Point> points = new Stack<>();
+        points.push(new Point(1, 1));
+        points.push(new Point(2, 1));
+        points.push(new Point(1, 4));
+        points.push(new Point(16, 1));
 
 //        System.out.println(isExist(new Point(1, 4), points));
+//        System.out.println(isExist(new Point(1, 5), points));
 //        solveMaze(maze1);
         solveMaze(maze2);
 
@@ -67,10 +69,17 @@ public class MazeSolver {
 
 
     public static Point isExist(Point point, Stack<Point> points) {
-        Point foundPoint = points.stream()
-                .filter(point1 -> point1.getY() == point.getY() && point1.getX() == point.getX())
-                .findAny()
-                .get();
-        return foundPoint;
+//        Point foundPoint = points.stream()
+//                .filter(point1 -> point1.getY() == point.getY() && point1.getX() == point.getX())
+//                .findAny()
+//                .get();
+        ListIterator<Point> pointListIterator = points.listIterator();
+        while(pointListIterator.hasNext()){
+            Point nextPoint = pointListIterator.next();
+            if(nextPoint.equals(point)){
+                return nextPoint;
+            }
+        }
+        return null;
     }
 }
