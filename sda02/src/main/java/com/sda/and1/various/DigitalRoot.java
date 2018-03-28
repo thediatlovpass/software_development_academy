@@ -50,7 +50,7 @@ public class DigitalRoot {
     }
 
     private static int digitalRoot(int number) {
-        while(number>9) {
+        while (number > 9) {
             List<Integer> tmp = new ArrayList<>();
             while (number > 0) {
                 tmp.add(number % 10);
