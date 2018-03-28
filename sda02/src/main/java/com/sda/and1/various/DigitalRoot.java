@@ -1,5 +1,10 @@
 package com.sda.and1.various;
 
+import org.assertj.core.api.Assertions;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class DigitalRoot {
     /*
         A digital root is the recursive sum of all the digits in a number.
@@ -34,14 +39,26 @@ public class DigitalRoot {
 
     public static void main(String[] args) {
         System.out.println(digitalRoot(16));
+        Assertions.assertThat(digitalRoot(16)).isEqualTo(7);
         System.out.println(digitalRoot(942));
+        Assertions.assertThat(digitalRoot(942)).isEqualTo(6);
         System.out.println(digitalRoot(132189));
+        Assertions.assertThat(digitalRoot(132189)).isEqualTo(6);
         System.out.println(digitalRoot(493193));
+        Assertions.assertThat(digitalRoot(493193)).isEqualTo(2);
 
     }
 
-    private static int digitalRoot(int number){
-        return 0;
+    private static int digitalRoot(int number) {
+        while(number>9) {
+            List<Integer> tmp = new ArrayList<>();
+            while (number > 0) {
+                tmp.add(number % 10);
+                number /= 10;
+            }
+            number = tmp.stream().mapToInt(value -> value).sum();
+        }
+        return number;
     }
 
 }
