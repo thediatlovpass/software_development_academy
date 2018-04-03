@@ -20,7 +20,6 @@ public class TimeFormatter {
                 resultText.append(count).append(" ").append(names[i]);
                 if (i > 0) {
                     resultText.append(", ");
-
                 }
             }
         }
