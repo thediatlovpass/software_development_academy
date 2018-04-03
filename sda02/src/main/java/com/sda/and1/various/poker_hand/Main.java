@@ -7,7 +7,7 @@ public class Main {
     //https://www.cardplayer.com/rules-of-poker/hand-rankings
 
     public static void main(String[] args) {
-//        PokerHand royalFlush = new PokerHand("AD KD QD JD TD");
+//        PokerHand compare = new PokerHand("AD KD QD JD TD");
 //        PokerHand straightFlush = new PokerHand("8D 7D 6D 5D 4D");
 //        PokerHand fourOfKind = new PokerHand("8D 8S 8H 8C 4D");
 //        PokerHand fullHouse = new PokerHand("8D 8S 8H 4C 4D");
