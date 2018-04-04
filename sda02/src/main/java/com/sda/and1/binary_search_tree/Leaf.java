@@ -45,4 +45,9 @@ public class Leaf {
     public void setValue(int value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "Leaf "+value;
+    }
 }
