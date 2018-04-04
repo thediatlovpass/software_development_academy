@@ -44,6 +44,24 @@ public class MyBst {
             return null;
         }
     }
+    public Leaf getMin(){
+        return getMin(root);
+    }
+    public Leaf getMin (Leaf root){
+        if (root.getLeft() != null){
+            return getMin(root.getLeft());
+        }
+        return root;
+    }
+    public Leaf getMax(){
+        return getMax(root);
+    }
+    public Leaf getMax (Leaf root){
+        if (root.getRight() != null){
+            return getMax(root.getRight());
+        }
+        return root;
+    }
 
 
 }
